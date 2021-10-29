@@ -13,6 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('welcome');
+});*/
+
+Route::get('/', function () {
+    return view('cidades');
+});
+
+Route::get('/sobre', function () {
+    return '<h1>Sobre</h1>';
 });
