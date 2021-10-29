@@ -7,13 +7,14 @@
     <title>Cidades</title>
 </head>
 <body>
-    <h1><?=$subtitulo?></h1>
+    <h1>{{$subtitulo}}</h1>
 
     <ul>
-        <?php foreach ($cidades as $cidade) {
-            echo "<li>".$cidade."</li>";
-        }
-        ?>
+        @forelse ($cidades as $cidade)
+            <li>{{$cidade}}</li>
+        @empty
+            <li>Nenhuma cidade cadastrada.</li>
+        @endforelse
     </ul>
 </body>
 </html>
