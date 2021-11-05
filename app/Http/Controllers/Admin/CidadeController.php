@@ -12,6 +12,6 @@ class CidadeController extends Controller
         $subtitulo = 'Lista de Cidades';
         $cidades = ['Belo Horizonte', 'Salvador', 'Manaus'];
 
-        return view('cidades', compact('subtitulo', 'cidades'));
+        return view('admin.cidades.index', compact('subtitulo', 'cidades'));
     }
 }
