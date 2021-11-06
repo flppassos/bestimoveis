@@ -23,11 +23,11 @@
                 @endforelse
             </tbody>
         </table>
+        <div class="fixed-action-btn">
+            <a class="btn-floating btn-large waves-effect waves-light" href="#">
+                <i class="large material-icons">add</i>
+            </a>
+        </div>
     </section>
 
-@endsection
-@section('secundario')
-    <section>
-        <p>Texto Secundário</p>
-    </section>
 @endsection

@@ -13,11 +13,14 @@ use App\Http\Controllers\Admin\CidadeController;
 |
 */
 
-/*Route::get('/', function () {
-    return view('welcome');
-});*/
+Route::redirect('/', '/admin/cidades');
 
-Route::get('/', [CidadeController::class, 'cidades']);
+Route::prefix('admin')->group(function(){
+
+    Route::get('cidades', [CidadeController::class, 'cidades']);
+    Route::get('cidades/adicionar', [CidadeController::class, 'formAdicionar']);
+
+});
 
 Route::get('/sobre', function () {
     return '<h1>Sobre</h1>';

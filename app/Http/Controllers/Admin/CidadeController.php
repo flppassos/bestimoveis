@@ -15,8 +15,11 @@ class CidadeController extends Controller
 
         $cidades = Cidade::all();
 
-        //dd($cidades); mostra um array com o conteúdo da variável.
-
         return view('admin.cidades.index', compact('subtitulo', 'cidades'));
+    }
+
+    public function formAdicionar()
+    {
+        return "Form Adicionar";
     }
 }
