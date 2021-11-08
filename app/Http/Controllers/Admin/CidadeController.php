@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Cidade;
+
+use App\Http\Requests\CidadeRequest; //inserindo o arquivo de request para validações
+use App\Models\Cidade; //inserindo o arquivo Model Cidade
 
 class CidadeController extends Controller
 {
@@ -23,7 +25,7 @@ class CidadeController extends Controller
         return view('admin.cidades.form');
     }
 
-    public function adicionar(Request $request)
+    public function adicionar(CidadeRequest $request)
     {
         //Pegando o dado enviado pelo form
         //$nome = $request->input('nome');
