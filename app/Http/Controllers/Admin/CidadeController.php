@@ -38,6 +38,8 @@ class CidadeController extends Controller
         //Atribuição em massa
         Cidade::create($request->all());
 
+        $request->session()->flash('cidade-sucesso', "Cidade $request->nome incluida com sucesso!");
+
         return redirect()->route('admin.cidades.listar');
     }
 }
