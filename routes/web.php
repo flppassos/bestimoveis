@@ -1,7 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\CidadeController;
+use Illuminate\Support\Facades\Route;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -11,14 +12,15 @@ use App\Http\Controllers\Admin\CidadeController;
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/
+ */
 
 Route::redirect('/', '/admin/cidades');
 
-Route::prefix('admin')->name('admin.')->group(function(){
+Route::prefix('admin')->name('admin.')->group(function () {
 
     Route::get('cidades', [CidadeController::class, 'cidades'])->name('cidades.listar');
     Route::get('cidades/adicionar', [CidadeController::class, 'formAdicionar'])->name('cidades.form');
+    Route::post('cidades/salvar', [CidadeController::class, 'adicionar'])->name('cidades.adicionar');
 
 });
 
