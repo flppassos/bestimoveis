@@ -29,11 +29,14 @@ class CidadeController extends Controller
         //$nome = $request->input('nome');
         //$nome = $request->nome;
 
-        //Criar um objeto do modelo (classe) Cidade
+        /*//Criar um objeto do modelo (classe) Cidade
         $cidade = new Cidade();
         $cidade->nome = $request->nome;
 
-        $cidade->save(); //salvar no banco de dados
+        $cidade->save(); //salvar no banco de dados*/
+
+        //Atribuição em massa
+        Cidade::create($request->all());
 
         return redirect()->route('admin.cidades.listar');
     }
