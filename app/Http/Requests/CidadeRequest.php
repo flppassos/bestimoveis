@@ -24,7 +24,7 @@ class CidadeRequest extends FormRequest
     public function rules()
     {
         return [
-            'nome' => 'bail|required|min:3|max:100|unique:cidades'
+            'nome' => "bail|required|min:3|max:100|unique:cidades,nome,$this->id"
         ];
     }
 }
