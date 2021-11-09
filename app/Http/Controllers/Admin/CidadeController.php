@@ -40,7 +40,15 @@ class CidadeController extends Controller
         //Atribuição em massa
         Cidade::create($request->all());
 
-        $request->session()->flash('cidade-sucesso', "Cidade $request->nome incluida com sucesso!");
+        $request->session()->flash('msg', "Cidade $request->nome incluida com sucesso!");
+
+        return redirect()->route('admin.cidades.listar');
+    }
+
+    public function deletar($id, Request $request)
+    {
+        Cidade::destroy($id);
+        $request->session()->flash('msg', "Cidade excluida com sucesso!");
 
         return redirect()->route('admin.cidades.listar');
     }

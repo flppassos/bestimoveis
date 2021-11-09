@@ -39,8 +39,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
     <script>
-        @if (session('cidade-sucesso'))
-            M.toast({html: "{{session('cidade-sucesso')}}"});
+        @if (session('msg'))
+            M.toast({html: "{{session('msg')}}"});
         @endif
     </script>
 </body>
