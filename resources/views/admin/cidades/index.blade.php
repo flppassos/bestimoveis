@@ -6,7 +6,7 @@
         <table class="highlight">
             <thead>
                 <tr>
-                    <th>Cidade</th>
+                    <th>{{$subtitulo}}</th>
                     <th class="right-align">Opções</th>
                 </tr>
             </thead>
@@ -16,9 +16,11 @@
                         <td>{{$cidade->nome}}</td>
                         <td class="right-align">
 
-                            <span>
-                                <i class="material-icons blue-text text-accent-2">edit</i>
-                            </span>
+                            <a href="{{route('admin.cidades.formEditar', $cidade->id)}}">
+                                <span>
+                                    <i class="material-icons blue-text text-accent-2">edit</i>
+                                </span>
+                            </a>
 
                             <form action="{{route('admin.cidades.deletar', $cidade->id)}}" method="POST" style="display: inline">
                                 @csrf
@@ -40,7 +42,7 @@
             </tbody>
         </table>
         <div class="fixed-action-btn">
-            <a class="btn-floating btn-large waves-effect waves-light" href="{{route('admin.cidades.form')}}">
+            <a class="btn-floating btn-large waves-effect waves-light" href="{{route('admin.cidades.formAdicionar')}}">
                 <i class="large material-icons">add</i>
             </a>
         </div>
