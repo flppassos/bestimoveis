@@ -16,13 +16,13 @@
                         <td>{{$cidade->nome}}</td>
                         <td class="right-align">
 
-                            <a href="{{route('admin.cidades.formEditar', $cidade->id)}}">
+                            <a href="{{route('admin.cidades.edit', $cidade->id)}}">
                                 <span>
                                     <i class="material-icons blue-text text-accent-2">edit</i>
                                 </span>
                             </a>
 
-                            <form action="{{route('admin.cidades.deletar', $cidade->id)}}" method="POST" style="display: inline">
+                            <form action="{{route('admin.cidades.destroy', $cidade->id)}}" method="POST" style="display: inline">
                                 @csrf
                                 @method('DELETE')
                                 <button style="border:0;background:transparent" type="submit">
@@ -42,7 +42,7 @@
             </tbody>
         </table>
         <div class="fixed-action-btn">
-            <a class="btn-floating btn-large waves-effect waves-light" href="{{route('admin.cidades.formAdicionar')}}">
+            <a class="btn-floating btn-large waves-effect waves-light" href="{{route('admin.cidades.create')}}">
                 <i class="large material-icons">add</i>
             </a>
         </div>

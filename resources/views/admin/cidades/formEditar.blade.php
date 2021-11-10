@@ -4,7 +4,7 @@
 
     <section class="section">
 
-        <form action="{{route('admin.cidades.editar', $cidade->id)}}" method="POST">
+        <form action="{{route('admin.cidades.update', $cidade->id)}}" method="POST">
 
             {{-- cross-site request forgery csrf --}}
             @csrf
@@ -18,10 +18,10 @@
                 @enderror
             </div>
             <div class="right-align">
-                <a class="btn-flat waves-effect" href="{{route('admin.cidades.listar')}}">Cancelar</a>
+                <a class="btn-flat waves-effect" href="{{route('admin.cidades.index')}}">Cancelar</a>
                 <button class="btn waves-effect waves-light" type="submit">Salvar</button>
             </div>
-            
+
         </form>
     </section>
 

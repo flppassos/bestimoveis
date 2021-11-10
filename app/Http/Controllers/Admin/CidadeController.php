@@ -10,22 +10,37 @@ use App\Models\Cidade; //inserindo o arquivo Model Cidade
 
 class CidadeController extends Controller
 {
-    public function cidades(){
-
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
         $subtitulo = 'Lista de Cidades';
-        //$cidades = ['Belo Horizonte', 'Salvador', 'Manaus'];
 
         $cidades = Cidade::all();
 
         return view('admin.cidades.index', compact('subtitulo', 'cidades'));
     }
 
-    public function formAdicionar()
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
     {
         return view('admin.cidades.formAdicionar');
     }
 
-    public function adicionar(CidadeRequest $request)
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(CidadeRequest $request)
     {
         //Pegando o dado enviado pelo form
         //$nome = $request->input('nome');
@@ -42,24 +57,29 @@ class CidadeController extends Controller
 
         $request->session()->flash('msg', "Cidade $request->nome incluida com sucesso!");
 
-        return redirect()->route('admin.cidades.listar');
+        return redirect()->route('admin.cidades.index');
     }
 
-    public function deletar($id, Request $request)
-    {
-        Cidade::destroy($id);
-        $request->session()->flash('msg', "Cidade excluida com sucesso!");
-
-        return redirect()->route('admin.cidades.listar');
-    }
-
-    public function formEditar($id)
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
     {
         $cidade = Cidade::find($id);
         return view('admin.cidades.formEditar', compact('cidade'));
     }
 
-    public function editar(CidadeRequest $request, $id)
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(CidadeRequest $request, $id)
     {
         $cidade = Cidade::find($id);
         //$cidade->nome = $request->nome; //Primeira forma
@@ -69,6 +89,20 @@ class CidadeController extends Controller
 
         $request->session()->flash('msg', "Cidade alterada com sucesso!");
 
-        return redirect()->route('admin.cidades.listar');
+        return redirect()->route('admin.cidades.index');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Request $request, $id)
+    {
+        Cidade::destroy($id);
+        $request->session()->flash('msg', "Cidade excluida com sucesso!");
+
+        return redirect()->route('admin.cidades.index');
     }
 }
