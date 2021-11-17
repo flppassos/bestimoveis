@@ -20,7 +20,7 @@
                 <a href="/" class="brand-logo">Best Imóveis</a>
                 <ul class="right">
                     <li>
-                        <a href="#">Imóveis</a>
+                        <a href="{{route('admin.imoveis.index')}}">Imóveis</a>
                     </li>
                     <li>
                         <a href="{{route('admin.cidades.index')}}">Cidades</a>
@@ -38,10 +38,18 @@
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
+
     <script>
+        // Mensagem Toast
         @if (session('msg'))
             M.toast({html: "{{session('msg')}}"});
         @endif
+
+        //Componente Select
+        document.addEventListener('DOMContentLoaded', function() {
+            var elems = document.querySelectorAll('select');
+            var instances = M.FormSelect.init(elems);
+        });
     </script>
 </body>
 </html>
