@@ -4,7 +4,12 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Cidade;
+use App\Models\Finalidade;
+use App\Models\Imovel;
+use App\Models\Proximidade;
+use App\Models\Tipo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ImovelController extends Controller
 {
@@ -26,7 +31,11 @@ class ImovelController extends Controller
     public function create()
     {
         $cidades = Cidade::all();
-        return view('admin.imoveis.formAdicionar', compact('cidades'));
+        $tipos = Tipo::all();
+        $finalidades = Finalidade::all();
+        $proximidades = Proximidade::all();
+
+        return view('admin.imoveis.formAdicionar', compact('cidades', 'tipos', 'finalidades', 'proximidades'));
     }
 
     /**
@@ -37,7 +46,19 @@ class ImovelController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        DB::beginTransaction(); //declaração de inicio de uma transação no banco de dados, pode dar certou ou não. Necessário por motivos de inserir dados em duas tabelas ao mesmo tempo.
+
+        $imovel = Imovel::create($request->all());
+        $imovel->endereco()->create($request->all());
+
+        if ($request->has('proximidades')) {
+            $imovel->proximidade()->sync($request->proximidades);
+        } //atualizar as proximidades na tabela intermediaria, se existir proximidade esse comando vai adicionar todas elas na tabela intermediaria
+
+        DB::commit(); //concluir a transação
+
+        $request->session()->flash('msg', "Imóvel cadastrado com sucesso!");
+        return redirect()->route('admin.imoveis.index');
     }
 
     /**
