@@ -20,7 +20,8 @@ class ImovelController extends Controller
      */
     public function index()
     {
-        return view('admin.imoveis.index');
+        $imoveis = Imovel::with(['cidade', 'endereco'])->get(); //Código para consulta Eage Loading
+        return view('admin.imoveis.index', compact('imoveis'));
     }
 
     /**
