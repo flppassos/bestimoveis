@@ -19,7 +19,7 @@ class CidadeController extends Controller
     {
         $subtitulo = 'Lista de Cidades';
 
-        $cidades = Cidade::all();
+        $cidades = Cidade::orderBy('nome', 'asc')->get();
 
         return view('admin.cidades.index', compact('subtitulo', 'cidades'));
     }

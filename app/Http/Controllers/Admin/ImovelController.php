@@ -21,6 +21,11 @@ class ImovelController extends Controller
     public function index()
     {
         $imoveis = Imovel::with(['cidade', 'endereco'])->get(); //Código para consulta Eage Loading
+        //$imoveis = Imovel::with(['cidade', 'endereco'])->orderBy('titulo', 'asc')->get(); //Código ordenar a consulta pelo titulo
+        $imoveis = Imovel::join('cidades', 'cidades.id', '=', 'imoveis.cidade_id')->join('enderecos', 'enderecos.imovel_id', '=', 'imoveis.id')
+        ->orderBy('cidades.nome', 'asc')
+        ->orderBy('titulo', 'asc')->get(); //Código ordenar a consulta pelo campo de uma tabela estrangeira
+
         return view('admin.imoveis.index', compact('imoveis'));
     }
 
