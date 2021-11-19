@@ -11,6 +11,9 @@
                 <div class="input-field col s12">
                     <label for="titulo">Título</label>
                     <input type="text" name="titulo" id="titulo">
+                    @error('titulo')
+                        <span class="red-text text-accent-3"><small>{{$message}}</small></span>
+                    @enderror
                 </div>
             </div>
 
@@ -25,6 +28,9 @@
                         @endforeach
                     </select>
                     <label for="cidade_id">Cidade</label>
+                    @error('cidade_id')
+                        <span class="red-text text-accent-3"><small>{{$message}}</small></span>
+                    @enderror
                 </div>
             </div>
 
@@ -39,6 +45,9 @@
                         @endforeach
                     </select>
                     <label for="tipo_id">Tipo de Imóvel</label>
+                    @error('tipo_id')
+                        <span class="red-text text-accent-3"><small>{{$message}}</small></span>
+                    @enderror
                 </div>
             </div>
 
@@ -52,6 +61,9 @@
                         </label>
                     </span>
                 @endforeach
+                @error('finalidade_id')
+                    <span class="red-text text-accent-3"><small>{{$message}}</small></span>
+                @enderror
             </div>
 
             {{-- Preço Dormitórios Salas --}}
@@ -59,14 +71,23 @@
                 <div class="input-field col s4">
                     <input type="number" name="preco" id="preco">
                     <label for="preco">Preço</label>
+                    @error('preco')
+                        <span class="red-text text-accent-3"><small>{{$message}}</small></span>
+                    @enderror
                 </div>
                 <div class="input-field col s4">
                     <input type="number" name="dormitorios" id="dormitorios">
                     <label for="dormitorios">Quantidade de Quartos</label>
+                    @error('dormitorios')
+                        <span class="red-text text-accent-3"><small>{{$message}}</small></span>
+                    @enderror
                 </div>
                 <div class="input-field col s4">
                     <input type="number" name="salas" id="salas">
                     <label for="salas">Quantidade de Salas</label>
+                    @error('salas')
+                        <span class="red-text text-accent-3"><small>{{$message}}</small></span>
+                    @enderror
                 </div>
             </div>
 
@@ -75,14 +96,23 @@
                 <div class="input-field col s4">
                     <input type="number" name="terreno" id="terreno">
                     <label for="terreno">Terreno em m²</label>
+                    @error('terreno')
+                        <span class="red-text text-accent-3"><small>{{$message}}</small></span>
+                    @enderror
                 </div>
                 <div class="input-field col s4">
                     <input type="number" name="banheiros" id="banheiros">
                     <label for="banheiros">Quantidade de banheiros</label>
+                    @error('banheiros')
+                        <span class="red-text text-accent-3"><small>{{$message}}</small></span>
+                    @enderror
                 </div>
                 <div class="input-field col s4">
                     <input type="number" name="garagens" id="garagens">
                     <label for="salas">Vagas na garagem</label>
+                    @error('garagens')
+                        <span class="red-text text-accent-3"><small>{{$message}}</small></span>
+                    @enderror
                 </div>
             </div>
 
@@ -91,6 +121,9 @@
                 <div class="input-field col s12">
                     <textarea name="descricao" id="descricao" class="materialize-textarea"></textarea>
                     <label for="descricao">Descrição</label>
+                    @error('descricao')
+                        <span class="red-text text-accent-3"><small>{{$message}}</small></span>
+                    @enderror
                 </div>
             </div>
 
@@ -99,18 +132,30 @@
                 <div class="input-field col s5">
                     <input type="text" name="rua" id="rua">
                     <label for="rua">Rua</label>
+                    @error('rua')
+                        <span class="red-text text-accent-3"><small>{{$message}}</small></span>
+                    @enderror
                 </div>
                 <div class="input-field col s2">
                     <input type="number" name="numero" id="numero">
                     <label for="numero">Número</label>
+                    @error('numero')
+                        <span class="red-text text-accent-3"><small>{{$message}}</small></span>
+                    @enderror
                 </div>
                 <div class="input-field col s2">
                     <input type="text" name="complemento" id="complemento">
                     <label for="complemento">Complemento</label>
+                    @error('complemento')
+                        <span class="red-text text-accent-3"><small>{{$message}}</small></span>
+                    @enderror
                 </div>
                 <div class="input-field col s3">
                     <input type="text" name="bairro" id="bairro">
                     <label for="bairro">Bairro</label>
+                    @error('bairro')
+                        <span class="red-text text-accent-3"><small>{{$message}}</small></span>
+                    @enderror
                 </div>
             </div>
 
@@ -126,6 +171,9 @@
 
                     </select>
                     <label for="proximidades">Pontos de interesse nas proximidades</label>
+                    @error('proximidades')
+                        <span class="red-text text-accent-3"><small>{{$message}}</small></span>
+                    @enderror
                 </div>
             </div>
 
