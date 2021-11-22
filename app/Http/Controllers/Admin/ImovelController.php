@@ -87,7 +87,14 @@ class ImovelController extends Controller
      */
     public function edit($id)
     {
-        //
+        $imovel = Imovel::with(['cidade', 'endereco', 'finalidade', 'tipo', 'proximidade'])->find($id);
+
+        $cidades = Cidade::all();
+        $tipos = Tipo::all();
+        $finalidades = Finalidade::all();
+        $proximidades = Proximidade::all();
+
+        return view('admin.imoveis.formEditar', compact('imovel', 'cidades', 'tipos', 'finalidades', 'proximidades'));
     }
 
     /**
@@ -99,7 +106,19 @@ class ImovelController extends Controller
      */
     public function update(ImovelRequest $request, $id)
     {
-        //
+        $imovel = Imovel::find($id);
+
+        DB::beginTransaction(); //declaração de inicio de uma transação no banco de dados
+            $imovel->update($request->all());
+            $imovel->endereco->update($request->all());
+
+            if ($request->has('proximidades')) {
+                $imovel->proximidade()->sync($request->proximidades);
+            }
+        DB::commit(); //concluir a transação no banco de dados
+
+        $request->session()->flash('msg', "Imóvel atualizado com sucesso!");
+        return redirect()->route('admin.imoveis.index');
     }
 
     /**
@@ -113,12 +132,12 @@ class ImovelController extends Controller
         //Seleciona o imóvel pelo id
         $imovel = Imovel::find($id);
 
-        DB::beginTransaction();
+        DB::beginTransaction(); //declaração de inicio de uma transação no banco de dados
             //Remove o endereço
             $imovel->endereco->delete();
             //Remove o imovel
             $imovel->delete();
-        DB::Commit();
+        DB::Commit(); //concluir a transação no banco de dados
 
         $request->session()->flash('msg', "Imóvel excluído com sucesso!");
         return redirect()->route('admin.imoveis.index');
