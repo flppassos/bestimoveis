@@ -37,7 +37,7 @@ class ImovelRequest extends FormRequest
             'descricao' => 'bail|required|string',
             'rua' => 'bail|required|min:1|max:100',
             'numero' => 'bail|required|integer',
-            'complemento' => 'bail|required|string',
+            'complemento' => 'bail|nullable|string',
             'bairro' => 'bail|required|min:3|max:50',
             'proximidades' => 'bail|required|array'
         ];

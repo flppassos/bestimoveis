@@ -9,7 +9,7 @@
                     <th>Cidade</th>
                     <th>Bairro</th>
                     <th>Título</th>
-                    <th>Opções</th>
+                    <th class="right-align">Opções</th>
                 </tr>
             </thead>
             <tbody>
@@ -18,17 +18,27 @@
                         <td>{{$imovel->cidade->nome}}</td>
                         <td>{{$imovel->endereco->bairro}}</td>
                         <td>{{$imovel->titulo}}</td>
-                        <td>
-                            <a href="{{route('admin.imoveis.edit', $imovel->id)}}">
+                        <td class="right-align">
+
+                            {{-- Visualizar --}}
+                            <a href="{{route('admin.imoveis.show', $imovel->id)}}" title="Visualizar">
+                                <span>
+                                    <i class="material-icons indigo-text text-darken-2">remove_red_eye</i>
+                                </span>
+                            </a>
+
+                            {{-- Editar --}}
+                            <a href="{{route('admin.imoveis.edit', $imovel->id)}}" title="Editar">
                                 <span>
                                     <i class="material-icons blue-text text-accent-2">edit</i>
                                 </span>
                             </a>
 
+                            {{-- Deletar --}}
                             <form action="{{route('admin.imoveis.destroy', $imovel->id)}}" method="POST" style="display: inline">
                                 @csrf
                                 @method('DELETE')
-                                <button style="border:0;background:transparent" type="submit">
+                                <button style="border:0;background:transparent" type="submit" title="Remover">
                                     <span style="cursor: pointer">
                                         <i class="material-icons red-text text-accent-3">delete_forever</i>
                                     </span>

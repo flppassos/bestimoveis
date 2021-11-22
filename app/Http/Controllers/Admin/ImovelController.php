@@ -76,7 +76,9 @@ class ImovelController extends Controller
      */
     public function show($id)
     {
-        //
+        $imovel = Imovel::with(['cidade', 'endereco', 'finalidade', 'tipo', 'proximidade'])->find($id); //Eager Loading
+
+        return view('admin.imoveis.show', compact('imovel'));
     }
 
     /**
@@ -87,7 +89,7 @@ class ImovelController extends Controller
      */
     public function edit($id)
     {
-        $imovel = Imovel::with(['cidade', 'endereco', 'finalidade', 'tipo', 'proximidade'])->find($id);
+        $imovel = Imovel::with(['cidade', 'endereco', 'finalidade', 'tipo', 'proximidade'])->find($id); //Eager Loading
 
         $cidades = Cidade::all();
         $tipos = Tipo::all();
