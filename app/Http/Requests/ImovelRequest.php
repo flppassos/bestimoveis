@@ -48,6 +48,7 @@ class ImovelRequest extends FormRequest
     public function attributes()
     {
         return [
+            'titulo' => 'título',
             'cidade_id' => 'cidade',
             'tipo_id' => 'tipo',
             'finalidade_id' => 'finalidade',
