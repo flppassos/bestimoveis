@@ -20,6 +20,13 @@
                         <td>{{$imovel->titulo}}</td>
                         <td class="right-align">
 
+                            {{-- Fotos --}}
+                            <a href="{{route('admin.imoveis.show', $imovel->id)}}" title="Fotos">
+                                <span>
+                                    <i class="material-icons green-text text-lighten-1">insert_photos</i>
+                                </span>
+                            </a>
+
                             {{-- Visualizar --}}
                             <a href="{{route('admin.imoveis.show', $imovel->id)}}" title="Visualizar">
                                 <span>
