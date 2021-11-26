@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Imovel;
 use Illuminate\Http\Request;
 
 class FotoController extends Controller
@@ -12,9 +13,11 @@ class FotoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($idImovel)
     {
-        dd('Index Foto Controller');
+        $imovel = Imovel::find($idImovel);
+
+        return view('admin.imoveis.fotos.index', compact('imovel'));
     }
 
     /**

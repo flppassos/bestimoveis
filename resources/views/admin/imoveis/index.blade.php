@@ -21,9 +21,9 @@
                         <td class="right-align">
 
                             {{-- Fotos --}}
-                            <a href="{{route('admin.imoveis.show', $imovel->id)}}" title="Fotos">
+                            <a href="{{route('admin.imoveis.fotos.index', $imovel->id)}}" title="Fotos">
                                 <span>
-                                    <i class="material-icons green-text text-lighten-1">insert_photos</i>
+                                    <i class="material-icons green-text text-lighten-1">insert_photo</i>
                                 </span>
                             </a>
 
