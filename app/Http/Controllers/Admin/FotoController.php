@@ -72,47 +72,22 @@ class FotoController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(FotoRequest $request, $id)
-    {
-        //
-    }
-
-    /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $idImovel, $idFoto)
     {
-        //
+        $foto = Foto::find($idFoto);
+
+        //Apagar a foto do storage
+        Storage::disk('public')->delete($foto->url);
+
+        //Deletando o registro no banco de dados
+        $foto->delete();
+
+        $request->session()->flash('msg', "Foto excluída com sucesso!");
+        return redirect()->route('admin.imoveis.fotos.index', $idImovel);
     }
 }

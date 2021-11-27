@@ -8,3 +8,28 @@
     position: relative;
     font-size: 0;
 }
+
+.flex-item .btn-fechar{
+    position: absolute;
+    bottom: 2px;
+    right: 2px;
+    z-index: 100;
+    background-color: #f7d2d2;
+    cursor: pointer;
+    opacity: .5;
+    font-size: 22px;
+    line-height: 10px;
+    border-radius: 50%;
+}
+
+.flex-item:hover .btn-fechar{
+    opacity: 1;
+}
+
+.flex-item button{
+    height: 24px;
+    border: none;
+    margin: 0;
+    padding: 0;
+    background: transparent;
+}
