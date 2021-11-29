@@ -16,14 +16,16 @@ use Illuminate\Support\Facades\Route;
 |
  */
 
-Route::redirect('/', '/admin/cidades');
-
+//PARTE ADMINISTRATIVA
 Route::prefix('admin')->name('admin.')->group(function () {
 
     Route::resource('cidades', CidadeController::class)->except(['show']);
     Route::resource('imoveis', ImovelController::class);
     Route::resource('imoveis.fotos', FotoController::class)->except('show', 'edit', 'update');
 });
+
+//SITE PRINCIPAL
+Route::resource('/', App\Http\Controllers\Site\CidadeController::class)->only('index');
 
 Route::get('/sobre', function () {
     return '<h1>Sobre</h1>';
