@@ -54,4 +54,9 @@ class Imovel extends Model
         //caso não seja esse o nome da tabela informar no código
         //return $this->belongsToMany(Proximidade::class, tabela_intermediaria);
     }
+
+    public function fotos()
+    {
+        return $this->hasMany(Foto::class);
+    }
 }

@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Foto extends Model
 {
     use HasFactory;
+
+    public function imovel()
+    {
+        return $this->belongsTo(Imovel::class);
+    }
 }
