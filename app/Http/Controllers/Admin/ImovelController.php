@@ -19,15 +19,34 @@ class ImovelController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $imoveis = Imovel::with(['cidade', 'endereco'])->get(); //Código para consulta Eage Loading
+        //$imoveis = Imovel::with(['cidade', 'endereco'])->get(); //Código para consulta Eage Loading
         //$imoveis = Imovel::with(['cidade', 'endereco'])->orderBy('titulo', 'asc')->get(); //Código ordenar a consulta pelo titulo
         $imoveis = Imovel::join('cidades', 'cidades.id', '=', 'imoveis.cidade_id')->join('enderecos', 'enderecos.imovel_id', '=', 'imoveis.id')
         ->orderBy('cidades.nome', 'asc')
-        ->orderBy('titulo', 'asc')->get(); //Código ordenar a consulta pelo campo de uma tabela estrangeira
+        ->orderBy('titulo', 'asc'); //Código ordenar a consulta pelo campo de uma tabela estrangeira
 
-        return view('admin.imoveis.index', compact('imoveis'));
+        //Armazenando os dados da requisição
+        $cidade_id = $request->cidade_id;
+        $titulo = $request->titulo;
+
+        //Pesquisa pela Cidade
+        if ($cidade_id) {
+            $imoveis->where('cidades.id', $cidade_id);
+        }
+
+        //Pesquisa pelo titulo do imóvel
+        if ($titulo) {
+            $imoveis->where('titulo', 'like', "%$titulo%");
+        }
+
+        //Executando a query e armazenando na variável imoveis
+        $imoveis = $imoveis->get();
+
+        $cidades = Cidade::orderBy('nome')->get();
+
+        return view('admin.imoveis.index', compact('imoveis', 'cidades', 'cidade_id', 'titulo'));
     }
 
     /**

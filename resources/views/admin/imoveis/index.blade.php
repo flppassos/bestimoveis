@@ -2,6 +2,39 @@
 
 @section('conteudo-principal')
 
+{{-- Filtro de Pesquisa --}}
+<section class="section">
+    <form action="{{route('admin.imoveis.index')}}" method="GET">
+
+        <div class="row valign-wrapper">
+            <div class="input-field col s6">
+                <select name="cidade_id" id="cidade">
+                    <option value="">Selecione uma cidade</option>
+                    @foreach ($cidades as $cidade)
+                        <option value="{{$cidade->id}}" {{$cidade->id == $cidade_id ? 'Selected' : ''}}>{{$cidade->nome}}</option>
+                    @endforeach
+                </select>
+            </div>
+
+            <div class="input-field col s6">
+                <input type="text" name="titulo" id="titulo" value="{{$titulo}}">
+                <label for="titulo">Titulo</label>
+            </div>
+        </div>
+
+        <div class="row right-align">
+            <a href="{{route('admin.imoveis.index')}}" class="btn-flat waves-effect">Exibir Todos</a>
+            <button class="btn waves-effect waves-light" type="submit">
+                Pesquisar
+            </button>
+        </div>
+
+    </form>
+</section>
+
+<hr />
+
+{{-- Lista de Imóveis--}}
     <section class="section">
         <table class="highlight">
             <thead>
@@ -55,7 +88,7 @@
                     </tr>
                 @empty
                     <tr>
-                        <td colspan="4">Não existem imóveis cadastrados</td>
+                        <td colspan="4">Não existem imóveis cadastrados ou imóveis que atendam aos critérios de pesquisa.</td>
                     </tr>
                 @endforelse
             </tbody>
