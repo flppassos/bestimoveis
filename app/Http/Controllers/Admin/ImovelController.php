@@ -42,7 +42,10 @@ class ImovelController extends Controller
         }
 
         //Executando a query e armazenando na variável imoveis
-        $imoveis = $imoveis->get();
+        //$imoveis = $imoveis->get();
+
+        //Executando a query e fazendo a paginação
+        $imoveis = $imoveis->paginate(3)->withQueryString();
 
         $cidades = Cidade::orderBy('nome')->get();
 

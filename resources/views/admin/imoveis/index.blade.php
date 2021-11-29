@@ -94,6 +94,10 @@
             </tbody>
         </table>
 
+        <div class="center">
+            {{$imoveis->links('shared.pagination')}}
+        </div>
+
         <div class="fixed-action-btn">
             <a class="btn-floating btn-large waves-effect waves-light" href="{{route('admin.imoveis.create')}}">
                 <i class="large material-icons">add</i>
