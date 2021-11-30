@@ -35,11 +35,17 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            //Slider
             var sliders = document.querySelectorAll('.slider');
             M.Slider.init(sliders, {
                 indicators: false,
                 height: 400,
             });
+
+            //Material Box
+            var boxes = document.querySelectorAll('.materialboxed');
+            M.Materialbox.init(boxes);
+
         });
     </script>
 </body>

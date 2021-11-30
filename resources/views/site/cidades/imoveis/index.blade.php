@@ -26,6 +26,10 @@
                     Preço: <strong>{{$imovel->preco}}</strong>
                 </p>
             </div>
+
+            <div class="card-action">
+                <a href="{{route('cidades.imoveis.show', [$cidade->id, $imovel->id])}}" class="green-text">Ver Detalhes</a>
+            </div>
         </div>
 
     @empty
